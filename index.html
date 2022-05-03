@@ -4,10 +4,88 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>Alpine work</h1>
+    <h1>AlpineJS Work</h1>
+    <div class="container">
+
+   <div class="first">
+    <h3>1. Creating a component</h3>
+    <div x-data="{title: 'Hi There!'}">
+        <p x-text="title"></p>
+    </div>
+
+    <h3>2. Changing title variables: x-on:@click</h3>
+    <div x-data="{ title: 'How are you?' }">
+        <p x-text="title"></p>
+        <button  @click="title='You Rock!'">click me</button>
+    </div>
+
+    <h3>3. Counter component</h3>
+    <div x-data="{ count: 1 }">
+        <p x-text="count"></p>
+        <button @click="count++">Count Up</button>
+    <button @click="count--">Count Down</button>
+</div>
+
+<h3>4. Timer component</h3>
+<div x-data="{ countdown: 60 }"
+     x-init="setInterval(function(){
+                countdown--;
+             }, 1000);
+             ">
+    <h1 x-text="countdown"></h1>
+</div>
+
+<h3>5. Show/hide component</h3>
+<div x-data="{ show: false }">
+    <button @click="show=!show">Show</button>
+    <div x-show="show">Enjoy your day!</div>
+</div>
+</div>
+
+<div class="second">
+<h3>6. Binding a variable</h3>
+<div x-data="{ title: 'You are Awesome!' }">
+    <p x-text="title"></p>
+    <input type="text" x-model="title">
+</div>
+
+<h3>7. Using x-html for dynamic HTML</h3>
+<div x-data="{ code: '<p>Dynamic Paragraph</p>' }">
+    <div x-html="code"></div>
+</div>
+
+<h3>8. Reference an element</h3>
+<div x-data="{ code: '<p>Dynamic Paragraph</p>' }">
+    <div x-ref="sentence">I am going to work</div>
+    <button @click="$refs.sentence.innerText = 'I changed my mind'">Change Sentence</button>
+</div>
+
+<h3>9. Using x-if to show/hide elements</h3>
+<div x-data="{ socks: 'blue' }">
+    <template x-if="socks=='blue'">
+        <p>My socks are blue</p>
+    </template>
+    <template x-if="socks=='green'">
+        <p>My socks are green</p>
+    </template>
+    <button @click="socks = 'green'">Change Socks</button>
+</div>
+
+<h3>10. Loop through an array (x-for)</h3>
+<div x-data="{ groceries: ['Milk', 'Eggs', 'Cheese'] }">
+    <p>Groceries</p>
+    <ul>
+        <template x-for="item in groceries">
+            <li x-text="item"></li>
+        </template>
+    </ul>
+</div>
+</div>
+</div>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js"></script>
 </body>
 </html>

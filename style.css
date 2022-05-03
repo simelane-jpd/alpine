@@ -1,0 +1,36 @@
+body{
+    background-color: #4cc9f0;
+    font-family:cursive;
+}
+h1 {
+    text-align:justify;
+    
+}
+.first {
+    flex: 1.5;
+}
+.second {
+   flex: 1.5;
+}
+@media (min-width: 760px) {
+    body {
+        background-color: darkturquoise;
+    }
+        .container {
+            display: flex;
+        }   
+
+    }
+   
+    
+
+
+@media (min-width: 900px) {
+    body {
+        background-color:#FFBE0B;
+    }
+    .container {
+        display: flex;
+    }   
+    
+}
