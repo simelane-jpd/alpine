@@ -31,12 +31,19 @@
 </div>
 
 <h3>4. Timer component</h3>
-<div x-data="{ countdown: 60 }"
-     x-init="setInterval(function(){
+<div x-data="{ countdown: 60,Thecount: false }"
+     x-init="setInterval(function(){if(countdown > 0 && Thecount)
+        {
                 countdown--;
-             }, 1000);
+      }}, 1000);
              ">
     <h1 x-text="countdown"></h1>
+    <button @click="Thecount=!Thecount">Start</button>
+    <button @click="Thecount=!Thecount"
+          >Stop</button>
+         
+        <button @click="countdown=60">Reset</button>
+    
 </div>
 
 <h3>5. Show/hide component</h3>
@@ -45,26 +52,32 @@
     <div x-show="show">Enjoy your day!</div>
 </div>
 </div>
-
 <div class="second">
-<h3>6. Binding a variable</h3>
+<h3>6. Show/hide directive with transition</h3>
+<div x-data="{ show: false }">
+    <button @click="show=!show">Show</button>
+    <div x-show.transition="show">Have a good one!</div>
+</div>
+
+
+<h3>7. Binding a variable</h3>
 <div x-data="{ title: 'You are Awesome!' }">
     <p x-text="title"></p>
     <input type="text" x-model="title">
 </div>
 
-<h3>7. Using x-html for dynamic HTML</h3>
+<h3>8. Using x-html for dynamic HTML</h3>
 <div x-data="{ code: '<p>Dynamic Paragraph</p>' }">
     <div x-html="code"></div>
 </div>
 
-<h3>8. Reference an element</h3>
+<h3>9. Reference an element</h3>
 <div x-data="{ code: '<p>Dynamic Paragraph</p>' }">
     <div x-ref="sentence">I am going to work</div>
     <button @click="$refs.sentence.innerText = 'I changed my mind'">Change Sentence</button>
 </div>
 
-<h3>9. Using x-if to show/hide elements</h3>
+<h3>10. Using x-if to show/hide elements</h3>
 <div x-data="{ socks: 'blue' }">
     <template x-if="socks=='blue'">
         <p>My socks are blue</p>
@@ -75,7 +88,7 @@
     <button @click="socks = 'green'">Change Socks</button>
 </div>
 
-<h3>10. Loop through an array (x-for)</h3>
+<h3>11. Loop through an array (x-for)</h3>
 <div x-data="{ groceries: ['Milk', 'Eggs', 'Cheese'] }">
     <p>Groceries</p>
     <ul>
